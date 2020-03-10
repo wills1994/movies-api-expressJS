@@ -1,0 +1,42 @@
+{
+  "name": "movies-api",
+  "version": "1.0.0",
+  "description": "expressjs api",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "NODE_ENV=production nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wills1994/movies-api-expressJS.git"
+  },
+  "keywords": [
+    "movies-api"
+  ],
+  "author": "WILSON PINTO DSOUZA",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --cache --fix",
+      "git add"
+    ]
+  }
+}
