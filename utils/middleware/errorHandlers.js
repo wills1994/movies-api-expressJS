@@ -1,4 +1,4 @@
-//const boom = require('@hapi/boom');
+const boom = require('@hapi/boom');
 const { config } = require('../../config/index');
 
 function withErrorStack(error, stack) {
@@ -14,26 +14,29 @@ function logErrors(err, req, res, next) {
   console.log(err);
   next(err);
 }
-/*
+
 function wrapErrors(err, req, res, next) {
-  if (!err.isBoom) {
-    next(boom.badImplementation(err));
+    // Es posible que el error que nos llegue no sea de tipo Boom,
+    // nosotros queremos que apartir de ahi todos los errores tengan la estructura boom
+    if (!err.isBoom) {
+      next(boom.badImplementation(err));
+    }
+    // Si el error que estamos pasando por acá es de tipo boom, 
+    // llamamos al siguiente middleware con el error
+    next(err);
   }
 
-  next(err);
-}*/
-
 function errorHandler(err, req, res, next) { // eslint-disable-line
-  /*const {
-    output: { statusCode, payload }
-  } = err;
-  */
-  res.status(err.status || 500 );
-  res.json(withErrorStack(err.message, err.stack));
+    // Apartir del error que ya va ha ser de tipo boom debemos sacar el output, 
+    // es la manera como le da menejo boom y ahoi podemos sacar el status code del error y el payload
+    const { output: { statusCode, payload } } = err;
+    // ahora no necesitamos manejar error.status, sino simplemente statusCode
+    res.status(statusCode);
+    // acá en lugar de pasar el error message pasamos el payload  
+    res.json(withErrorStack(payload, err.stack));
 }
-
 module.exports = {
   logErrors,
- // wrapErrors,
+  wrapErrors,
   errorHandler
 };

@@ -54,4 +54,28 @@ POST. Creación de datos.<BR />
 DELETE. Eliminación de datos.
 
 # MIDDELWARE
-Un middleware es una pieza de software que está en medio de otras 2. Es decir, es porque nos ayuda a conectar otras piezas de software
+Un middleware es una pieza de software que está en medio de otras 2. Es decir, es porque nos ayuda a conectar otras piezas de software.
+
+Para errores que se retornan desde funciones asíncronas invocadas desde un manejador de ruta o un middleware, es necesario pasar el error como argumento a la función next(), de esta manera Express capturará el error y lo procesará.
+
+Ejemplo:
+app.get("/", function(req, res, next) {
+  fs.readFile("/file-does-not-exist", function(err, data) {
+    if (err) {
+      next(err); // Se debe pasar el error a Express.
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+# Capa de validación de datos a travéz de un middleware
+
+La capa de validación es necesaria porque cuando estamos consumiendo nuestros endpoints, los endpoints no saben que datos le estamos enviando. Entonces mediante este middleware podemos validar o podemos especificar unos schemas, de tal manera que podemos especificar que: la pelicula sea de tipo string, queremos que la numeración sea de tipo número, etc.
+
+# ¿Qué es Join y Boom?
+Join y Boom son tecnologías del ecositema de hapijs pero son tan buenas, que las vamos a integrar como middleware en nuestra aplicación de express.
+
+Join: Object schema validation, es la librería que nos va a ayudar a validar los schemas.
+<br /> 
+Boom: HTPP-friendly error objects. Es un manjeador de errores de una manera mucho más comprensible.
