@@ -52,3 +52,6 @@ PUT. Reemplazar datos. <BR />
 PATCH. Actualizar datos en un recurso específico. <BR />
 POST. Creación de datos.<BR />
 DELETE. Eliminación de datos.
+
+# MIDDELWARE
+Un middleware es una pieza de software que está en medio de otras 2. Es decir, es porque nos ayuda a conectar otras piezas de software

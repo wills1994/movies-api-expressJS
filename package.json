@@ -4,8 +4,8 @@
   "description": "expressjs api",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index",
-    "start": "NODE_ENV=production nodemon index"
+    "dev": "set DEBUG=app:* && set NODE_ENV=development &&  nodemon index",
+    "start": "SET NODE_ENV=production  && nodemon index"
   },
   "repository": {
     "type": "git",

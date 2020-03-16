@@ -13,10 +13,13 @@ function moviesApi(app) {
     try {
       const movies = await moviesService.getMovies({ tags });
 
+     throw new Error('Error to get movies');
+
       res.status(200).json({
         data: movies,
         message: 'movies listed'
       });
+      
     } catch (err) {
       next(err);
     }
