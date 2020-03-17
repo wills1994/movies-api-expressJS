@@ -3,7 +3,7 @@ const { config } = require('../../config/index');
 
 function withErrorStack(error, stack) {
   if (config.dev) {
-    return { error, stack };
+    return { ...error, stack };
   }
 
   return error;
@@ -29,7 +29,9 @@ function wrapErrors(err, req, res, next) {
 function errorHandler(err, req, res, next) { // eslint-disable-line
     // Apartir del error que ya va ha ser de tipo boom debemos sacar el output, 
     // es la manera como le da menejo boom y ahoi podemos sacar el status code del error y el payload
-    const { output: { statusCode, payload } } = err;
+      const { 
+            output: { statusCode, payload } 
+      } = err;
     // ahora no necesitamos manejar error.status, sino simplemente statusCode
     res.status(statusCode);
     // acá en lugar de pasar el error message pasamos el payload  

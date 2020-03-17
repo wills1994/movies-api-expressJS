@@ -12,12 +12,15 @@ const notFoundHandler = require('./utils/middleware/notFoundHandler.js');
 //por defecto express necesita parcear estos datos JSON
 app.use(express.json());
 moviesApi(app);
+
+// Catch 404
+app.use(notFoundHandler);
+
+//Errors middleware
 app.use(logErrors);
 app.use(errorHandler);
 app.use(wrapErrors);
 
-// Catch 404
-app.use(notFoundHandler);
 
 app.listen(config.port, function() {
   // eslint-disable-next-line no-console
