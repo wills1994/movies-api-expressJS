@@ -79,3 +79,14 @@ Join y Boom son tecnologías del ecositema de hapijs pero son tan buenas, que la
 Join: Object schema validation, es la librería que nos va a ayudar a validar los schemas.
 <br /> 
 Boom: HTPP-friendly error objects. Es un manjeador de errores de una manera mucho más comprensible.
+
+# TESTING
+npm i -D mocha supertest sinon proxyquire <br />
+
+mocha: es quien nos ayuda a correr los test.<br />
+
+supertest: es una utilidad que nos ayuda a levantar un servidor temporal. <br />
+
+sinon es una utilidad que nos ayuda a hacer mocks para test. <br />
+
+proxyquire: es una utilidad que nos ayuda a inyectar los mocks cuando requeramos los paquetes.
