@@ -90,3 +90,9 @@ supertest: es una utilidad que nos ayuda a levantar un servidor temporal. <br />
 sinon es una utilidad que nos ayuda a hacer mocks para test. <br />
 
 proxyquire: es una utilidad que nos ayuda a inyectar los mocks cuando requeramos los paquetes.
+
+# DOCKER
+docker build -t movies-api-expressjs .
+docker run -d movies-api-expressjs
+docker run -p 3000:3000 -d movies-api
+

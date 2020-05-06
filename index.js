@@ -6,7 +6,6 @@ const helmet = require('helmet');//protegidos al establecer multiples encabezado
 const cors = require('cors');
 const slash = require('express-slash');
 const app = express();
-
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies.js');
 
